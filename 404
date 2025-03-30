@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:description" content="rad0's personal site" />
+        <meta
+            property="og:image"
+            content="imgs/7652e48dfb6728e7b630db62de00c428.png"
+        />
+        <title>rad0 | Page Not Found</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="imgs/7652e48dfb6728e7b630db62de00c428.ico"
+        />
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <a href="/">/about</a>
+                <a href="ctf">/ctf</a>
+                <a href="thm">/thm</a>
+            </header>
+            <div class="content">
+                <div class="path">/home/rad0/404</div>
+                <h3 style="font-weight: normal">Page Not Found</h3>
+            </div>
+        </div>
+    </body>
+</html>

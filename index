@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:description" content="rad0's personal site" />
+        <meta
+            property="og:image"
+            content="imgs/7652e48dfb6728e7b630db62de00c428.png"
+        />
+        <title>rad0 | about</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="imgs/7652e48dfb6728e7b630db62de00c428.ico"
+        />
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <a href="/">/about</a>
+                <a href="ctf">/ctf</a>
+                <a href="thm">/thm</a>
+            </header>
+            <div class="content">
+                <div class="path">/home/rad0/about</div>
+                <div class="wordmark">
+                    <img
+                        src="imgs/a21f0869a9e10395120a11452ef94fdd.png"
+                        alt="rad0"
+                        class="center"
+                    />
+                </div>
+
+                <div class="about">
+                    <h3>About Me:</h3>
+                    <p>
+                        <span class="highlight">Hey!</span> I am a cybersecurity
+                        enthusiast from Slovakia. I've been learning about
+                        cybersecurity in my free time since 2022 and I'm
+                        currently improving my skills by doing various CTFs and
+                        learning on
+                        <a
+                            class="link"
+                            href="https://www.tryhackme.com"
+                            target="_blank"
+                            >TryHackMe</a
+                        >.
+                    </p>
+                </div>
+                <div class="contact">
+                    <h3>Contact:</h3>
+                    <ul class="fa-ul">
+                        <li>
+                            <span class="fa-li"
+                                ><i class="fa-brands fa-discord"></i></span
+                            >_radovan
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

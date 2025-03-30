@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:description" content="rad0's personal site" />
+        <meta
+            property="og:image"
+            content="imgs/7652e48dfb6728e7b630db62de00c428.png"
+        />
+        <title>rad0 | thm</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="imgs/7652e48dfb6728e7b630db62de00c428.ico"
+        />
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <a href="/">/about</a>
+                <a href="ctf">/ctf</a>
+                <a href="thm">/thm</a>
+            </header>
+            <div class="content">
+                <div class="path">/home/rad0/thm</div>
+                <p>
+                    <a
+                        class="highlight"
+                        class="link"
+                        href="https://www.tryhackme.com"
+                        target="_blank"
+                        >TryHackMe</a
+                    >
+                    is a browser-based cybersecurity training platform with
+                    hands-on exercises and labs that cover all skill levels.
+                </p>
+                <h3>My Profile:</h3>
+                <div class="thm-profile">
+                    <iframe
+                        src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=2109600"
+                    ></iframe>
+                </div>
+                <div class="thm-legend">
+                    <ul class="fa-ul">
+                        <li>
+                            <span class="fa-li"
+                                ><i
+                                    class="fa-solid fa-trophy"
+                                    style="color: #9ca4b4"
+                                ></i></span
+                            >current rank
+                        </li>
+                        <li>
+                            <span class="fa-li"
+                                ><i
+                                    class="fa-solid fa-fire"
+                                    style="color: #a3ea2a"
+                                ></i></span
+                            >current streak
+                        </li>
+                        <li>
+                            <span class="fa-li"
+                                ><i
+                                    class="fa-solid fa-award"
+                                    style="color: #d451fd"
+                                ></i></span
+                            >badges earned
+                        </li>
+                        <li>
+                            <span class="fa-li"
+                                ><i
+                                    class="fa-solid fa-door-closed"
+                                    style="color: #719cf9"
+                                ></i></span
+                            >rooms completed
+                        </li>
+                    </ul>
+                </div>
+                <h3>Learning Paths:</h3>
+                <div class="thm-paths">
+                    <ul class="fa-ul">
+                        <li>
+                            <span class="fa-li"
+                                ><i class="fa-solid fa-circle-check"></i></span
+                            >Web Fundamentals
+                        </li>
+                        <li>
+                            <span class="fa-li"
+                                ><i class="fa-solid fa-circle-check"></i></span
+                            >Cyber Security 101
+                        </li>
+                        <li>
+                            <span class="fa-li"
+                                ><i class="fa-solid fa-circle-check"></i></span
+                            >Pre Security
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:description" content="rad0's personal site" />
+        <meta
+            property="og:image"
+            content="imgs/7652e48dfb6728e7b630db62de00c428.png"
+        />
+        <title>rad0 | ctf</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="imgs/7652e48dfb6728e7b630db62de00c428.ico"
+        />
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <a href="/">/about</a>
+                <a href="ctf">/ctf</a>
+                <a href="thm">/thm</a>
+            </header>
+            <div class="content">
+                <div class="path">/home/rad0/ctf</div>
+                <p>
+                    <span class="highlight">Shadow Wizard Money Gang</span> is a small
+                    group of cybersecurity hobbyists from all over the world.
+                </p>
+                <div class="ctfs">
+                    <h3>CTFs:</h3>
+                    <ul class="fa-ul">
+                        <li>
+                            <span class="fa-li"
+                                ><i class="fa-solid fa-flag"></i></span
+                            ><a
+                                href="https://ctf.nullcon.net/scoreboard"
+                                class="link"
+                                target="_blank""
+                                >Nullcon 2025</a
+                            >
+                        </li>
+                        <li>
+                            <span class="fa-li"
+                                ><i class="fa-solid fa-flag"></i></span
+                            ><a
+                                href="https://tryhackme.com/room/HackfinityBattle"
+                                class="link"
+                                target="_blank""
+                                >Hackfinity Battle</a
+                            >
+                        </li>
+                        <li>
+                            <span class="fa-li"
+                                ><i class="fa-solid fa-flag"></i></span
+                            ><a
+                                href="https://ctf.hackthebox.com/event/2107/scoreboard"
+                                class="link"
+                                target="_blank""
+                                >Cyber Apocalypse 2025</a
+                            >
+                            <span class="shadow"
+                                >(as part of The other Dropout Phreaks
+                                team)</span
+                            >
+                        </li>
+                    </ul>
+                </div>
+                <div class="members">
+                    <h3>Members:</h3>
+                    <ul>
+                        <div class="member"<li><img src="imgs/b4ec2bcfeb89226acfaf6d0ddbe7a1f2.jpg" class="pfp" alt="ascended-skid"><span class="highlight" style="font-weight: bolder;">Ascended Skid</span></li></div>
+                        <ul>
+                            <li class="description">Wizard of the Florida swamps. Drinker of coffee. Dabbler in ancient sorcery and C programming. Definitely a human and not three cats in a trench coat. Currently integrating Raspberry Pis into things that are probably better off without them.</li>
+                        </ul>
+                        <div class="member"<li><img src="imgs/9747f6d3de6190be4b07ccc905e4986c.gif" class="pfp" alt="bianca"><span class="highlight"style="font-weight: bolder;">bianca</span> </li></div>
+                        <ul>
+                            <li class="description">(to be added)</li>
+                        </ul>
+                            <div class="member"<li><img src="imgs/fbd3758276d0a3bc1539301e09664154.png" class="pfp" alt="isda"><span class="highlight" style="font-weight: bolder;">IsDa</span></li></div>
+                        <ul>
+                            <li class="description">Just a Wiener Schnitzel who likes Cybersecurity and loves to mess around with Web-stuff, Binary Exploitation and Reverse Engineering. Always learning something new.</li>
+                        </ul>
+                        <div class="member"<li><img src="imgs/12a5aa93cbccf75a369a09e4f47a4e3f.png" class="pfp" alt="rad0"><span class="highlight" style="font-weight: bolder;">rad0</span></li></div>
+                        <ul>
+                            <li class="description">Even though I'm still a beginner, I particularly enjoy challenges related to web applications.</li>
+                        </ul>
+                        <div class="member"<li><img src="imgs/c0f3894aaa97c360202ab983ebfcc850.png" class="pfp" alt="tune2nature"><span class="highlight" style="font-weight: bolder;">Tune2Nature</span></li></div>
+                        <ul>
+                            <li class="description">An ancient one who has been hacking since before the dawn of the web. Still ripping it up.</li>
+                        </ul>
+                        <div class="member"<li><img src="imgs/356470ae17acffe8bb73128b06da924f.png" class="pfp" alt="redacted"><span class="highlight" style="font-weight: bolder;">[redacted]</span></li></div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
