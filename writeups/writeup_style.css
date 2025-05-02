@@ -1,0 +1,186 @@
+body {
+    color: #dddddd;
+    background-color: #0d0d0d;
+    font-family: "FiraCode Nerd Font", monospace;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+}
+
+::selection {
+    background-color: #626262;
+    color: #dddddd;
+}
+
+.container {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.content {
+    margin: auto;
+    max-width: clamp(50%, 60vw, 100%);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header a {
+    color: #0d0d0d;
+    background-color: #00ff00;
+    padding: 5px;
+    text-decoration: none;
+    white-space: nowrap;
+    display: inline-flex;
+    margin-bottom: 12px;
+    width: fit-content;
+    user-select: none;
+}
+
+header {
+    margin: auto;
+    padding-top: 20px;
+    width: clamp(50%, 60vw, 100%);
+    border-bottom: 2px solid #00ff00;
+}
+
+header a:hover {
+    color: #00ff00;
+    background-color: #0d0d0d;
+    border-bottom: 2px solid #00ff00;
+    margin-bottom: -2px;
+}
+
+.image {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 70%;
+}
+
+.highlight {
+    color: #00ff00;
+    text-decoration: none;
+}
+
+.text .cmd {
+    background-color: #191919;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.command {
+    background-color: #191919;
+    border-radius: 5px;
+    width: fit-content;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.output p,
+.input p {
+    color: #23fd00;
+    font-size: 1rem;
+    padding: 5px;
+    display: inline-block;
+    margin: 0px;
+}
+
+.input p {
+    color: #dddddd;
+    display: block;
+    width: fit-content;
+}
+
+.text a {
+    text-decoration: none;
+    color: #00ff00;
+    border: none;
+}
+
+.text p {
+    margin: 0px;
+}
+
+.rownum {
+    color: #626262;
+    user-select: none;
+    padding-right: 8px;
+}
+
+.writeup h3 {
+    color: #00ff00;
+    display: inline-flex;
+    font-weight: lighter;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.machine {
+    background-color: #191919;
+    margin-top: 20px;
+    padding: 5px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.name {
+    color: #00ff00;
+    user-select: none;
+    margin-right: 10px; /* Add space between name and avatar */
+}
+
+.avatar {
+    height: 100px;
+    pointer-events: none;
+    display: block;
+    margin-left: 20px; /* Add space between image and description */
+}
+
+.description {
+    user-select: none;
+    display: flex;
+    flex-direction: column; /* Stack the name and difficulty vertically */
+    align-items: flex-start; /* Align text to the left */
+}
+
+.description p,
+.description h3 {
+    margin: 0px;
+}
+
+.description i {
+    color: #00ff00;
+    margin-right: 5px;
+}
+
+.path {
+    padding: 5px;
+    color: #626262;
+    font-size: 1rem;
+    user-select: none;
+}
+
+.shadow {
+    color: #626262;
+}
+
+@media (max-width: 800px) {
+    .content {
+        max-width: clamp(90%, 60vw, 100%);
+        margin: auto;
+    }
+    header {
+        margin: auto;
+        padding-top: 20px;
+        width: clamp(90%, 60vw, 100%);
+        border-bottom: 2px solid #00ff00;
+    }
+}
